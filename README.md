@@ -4,21 +4,22 @@
 
 ## users
 
-| Column        | Type   | Options                       |
-| ------------- | ------ | ----------------------------- |
-| email         | string | null: false, uniqueness: true |
-| password      | string | null: false                   |
-| nickname      | string | null: false                   |
-| full_name     | string | null: false                   |
-| yomigana      | string | null: false                   |
-| date_of_birth | date   | null: false                   |
+| Column             | Type   | Options                       |
+| ------------------ | ------ | ----------------------------- |
+| email              | string | null: false, uniqueness: true |
+| encrypted_password | string | null: false                   |
+| nickname           | string | null: false                   |
+| surname            | string | null: false                   |
+| name               | string | null: false                   |
+| surname_furigana   | string | null: false                   |
+| name_furigana      | string | null: false                   |
+| date_of_birth      | date   | null: false                   |
 
 ### Association
 
 - has_one :address
 - has_many :items
 - has_many :comments
-- has_many :orders
 
 ## addresses
 
@@ -28,26 +29,29 @@
 | prefecture_id | integer    | null: false (active hash)      |
 | city          | string     | null: false                    |
 | house_number  | string     | null: false                    |
-| building      | string     | null: false                    |
+| building      | string     |                                |
+| phone_number  | string     | null: false                    |
+| orders        | references | null: false, foreign_key: true |
 | user          | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_one :user
 - belongs_to :prefecture
+- belongs_to :order
 
 ## items
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| title         | string     | null: false                    |
-| price         | bigint     | null: false                    |
-| description   | text       | null: false                    |
-| condition_id  | integer    | null: false (active hash)      |
-| mailing       | string     | null: false                    |
-| delivery_time | string     | null: false                    |
-| user          | references | null: false, foreign_key: true |
-| category_id   | integer    | null: false (active hash)      |
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| title           | string     | null: false                    |
+| price           | integer    | null: false                    |
+| description     | text       | null: false                    |
+| condition_id    | integer    | null: false (active hash)      |
+| mailing_cost_id | integer    | null: false (active hash)      |
+| mailer_loc      | integer    | null: false (active hash)      |
+| days_til_post   | integer    | null: false (active hash)      |
+| category_id     | integer    | null: false (active hash)      |
+| user            | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -57,6 +61,9 @@
 - has_many :brand_tags, through: :item_tag_relations
 - belongs_to :user
 - belongs_to :condition
+- belongs_to :mailing_cost
+- belongs_to :prefecture
+- belongs_to :days_til_post
 - belongs_to :category
 
 ## brand_tags
@@ -106,8 +113,8 @@
 
 ### Association
 
-- has_one :item
-- belongs_to :user
+- belongs_to :item
+- has_one :address
 
 # System dependencies
 
