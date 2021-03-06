@@ -17,9 +17,9 @@
 
 ### Association
 
-- has_one :address
 - has_many :items
 - has_many :comments
+- has_many :orders
 
 ## addresses
 
@@ -31,8 +31,7 @@
 | house_number  | string     | null: false                    |
 | building      | string     |                                |
 | phone_number  | string     | null: false                    |
-| orders        | references | null: false, foreign_key: true |
-| user          | references | null: false, foreign_key: true |
+| order         | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -114,6 +113,7 @@
 ### Association
 
 - belongs_to :item
+- belongs_to :user
 - has_one :address
 
 # System dependencies
