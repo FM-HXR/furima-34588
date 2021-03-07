@@ -40,17 +40,18 @@
 
 ## items
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| title           | string     | null: false                    |
-| price           | integer    | null: false                    |
-| description     | text       | null: false                    |
-| condition_id    | integer    | null: false (active hash)      |
-| mailing_cost_id | integer    | null: false (active hash)      |
-| mailer_loc      | integer    | null: false (active hash)      |
-| days_til_post   | integer    | null: false (active hash)      |
-| category_id     | integer    | null: false (active hash)      |
-| user            | references | null: false, foreign_key: true |
+| Column               | Type       | Options                        |
+| -------------------- | ---------- | ------------------------------ |
+| title                | string     | null: false                    |
+| price                | integer    | null: false                    |
+| description          | text       | null: false                    |
+| condition_id         | integer    | null: false (active hash)      |
+| mailing_cost_id      | integer    | null: false (active hash)      |
+| mailer_loc_id        | integer    | null: false (active hash)      |
+| days_til_post_id     | integer    | null: false (active hash)      |
+| category_id          | integer    | null: false (active hash)      |
+| in_stock(追加実装用) | boolean    | null: false, foreign_key: true |
+| user                 | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -78,7 +79,7 @@
 - has_many :items, through: :item_tag_relations
 - belongs_to :category
 
-## item_tag_relations
+## item_tag_relations （追加実装で使用予定）
 
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
