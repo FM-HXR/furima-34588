@@ -29,5 +29,5 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-.Ds_Store
+.DS_Store
 scratch/resources/.~lock.Untitled 1_2.csv#
