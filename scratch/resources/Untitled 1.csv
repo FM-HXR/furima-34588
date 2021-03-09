@@ -1,6 +1,7 @@
-id,name,prefectures
-1,pinkguy,東京
-2,joji,千葉
-3,safariman,神奈川
-4,chinchin,埼玉
-5,prometheus,茨城
+name,prefectures,condition
+pinkguy,東京,Alive
+joji,千葉,Semi-conscious
+safariman,神奈川,Well dead
+chinchin,埼玉,
+prometheus,茨城,
+,山形,
