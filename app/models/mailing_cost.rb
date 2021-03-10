@@ -1,7 +1,7 @@
-class Day < ActiveHash::Base
+class MailingCost < ActiveHash::Base
   include CsvHasher
   include ActiveHash::Associations
   @hashes = CsvHasher.get_hashes
-  self.data = @hashes[4]
+  self.data = @hashes[2]
   has_many :items
 end
