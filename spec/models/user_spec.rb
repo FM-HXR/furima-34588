@@ -117,11 +117,11 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
 
-    # it 'Email taken' do
-    #   @user.email = @user_1.email
-    #   @user.valid?
-    #   expect(@user.errors.full_messages).to include("Email has already been taken")
-    # end
+    it 'Email taken' do
+      @user.email = @user_1.email
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Email has already been taken")
+    end
 
   end
 end
