@@ -7,7 +7,6 @@ class ItemsController < ApplicationController
   end
 
   def new
-    # @hashes = CsvHasher.get_hashes
     @item = Item.new
   end
 
