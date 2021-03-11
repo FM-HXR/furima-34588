@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   root to: "items#index"
   resources :items, except: [:index] do
+    resources :orders
     collection do
       get 'search'
     end
-    resources :orders, only: [:index]
   end
 end
