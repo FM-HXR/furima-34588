@@ -5,8 +5,10 @@ class OrderAddress
   include ActiveModel::Model
   # The parameters that the "hybrid model" (form_object) will accept from the controller.
   # Don't forget building info. It doesn't need validation but needs to be accepted.
-  attr_accessor :item_id, :user_id, :postal_code, :prefecture_id, :city, :house_number, :building, :phone_number
+  attr_accessor :item_id, :user_id, :postal_code, :prefecture_id, :city, :house_number, :building, :phone_number, :price, :token
+  # attr_accessor :item_id, :user_id, :postal_code, :prefecture_id, :city, :house_number, :building, :phone_number
 
+  
   # Addresses column
   validates :city, presence: true
   validates :house_number, presence: true
@@ -22,6 +24,8 @@ class OrderAddress
   # Orders column
   validates :item_id, presence: true
   validates :user_id, presence: true
+  # Pay.jp token validates:
+  validates :token, presence: true
 
   def save
     # Split passed params into seperate create methods for each model.

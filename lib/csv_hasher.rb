@@ -12,13 +12,14 @@ module CsvHasher
     end
   end
 
-  def self.get_hashes
+  def self.get_hashes(list)
     csv = "#{Rails.root}/lib/collections.csv"
     cat_list = []
     cond_list = []
     mail_list = []
     pref_list = []
     day_list = []
+    error_list = [{id: 1, option: "This hash list doesn't exist."}]
 
     i = 1
     CSV.foreach(csv) do |row|
@@ -36,15 +37,22 @@ module CsvHasher
       
       i += 1
     end
-    lists = [
-      cat_list,
-      cond_list,
-      mail_list,
-      pref_list,
-      day_list
-    ]
-    
-    return lists
 
+    # list == 'category' ? return cat_list : return error_list
+
+    case list
+    when 'category'
+      return cat_list
+    when 'condition'
+      return cond_list
+    when 'mailing'
+      return mail_list
+    when 'prefecture'
+      return pref_list
+    when 'days'
+      return day_list
+    else
+      return error_list
+    end
   end
 end

@@ -7,7 +7,7 @@ require("@rails/ujs").start();
 // require("turbolinks").start()
 require("@rails/activestorage").start();
 require("channels");
-// require("../card");
+require("../card");
 require("../item_new");
 //= require bootstrap-datepicker
 
