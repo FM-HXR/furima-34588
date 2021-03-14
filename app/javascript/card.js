@@ -2,7 +2,7 @@
 
 const pay = () => {
   console.log("Const Pay");
-  Payjp.setPublicKey("pk_test_e6268a5908900da8ccdde7d7");
+  Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
   const form = document.getElementById("charge-form");
   form.addEventListener("submit", function (e) {
     // Prevent html from submitting form simultaneously.
