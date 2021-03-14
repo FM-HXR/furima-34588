@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
   describe '#create: ' do
     before do
       @user = FactoryBot.build(:user)
-      @user_1 = FactoryBot.create(:user)
+      @user_1 = FactoryBot.build(:user)
     end
     
     # All Green
@@ -118,9 +118,11 @@ RSpec.describe User, type: :model do
     end
 
     it 'Email taken' do
+      @user_1.save
       @user.email = @user_1.email
       @user.valid?
       expect(@user.errors.full_messages).to include("Email has already been taken")
+      @user_1.destroy
     end
 
   end

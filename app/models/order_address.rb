@@ -18,7 +18,7 @@ class OrderAddress
   with_options presence: true do
     validates :postal_code, format: {with: /\A\d{3}[-]\d{4}\z/, message: "is invalid. Please use the correct format."}
     validates :prefecture_id, numericality: { other_than: 1 }
-    validates :phone_number, format: {with: /\A[0]\d{10}\z/, message: "is invalid. Number too long/short."}
+    validates :phone_number, length: {minimum: 10, maximum: 12}, format: {with: /\d+/, message: "is invalid. Numbers only."}
   end
   
   # Orders column
@@ -26,9 +26,11 @@ class OrderAddress
   validates :user_id, presence: true
   # Pay.jp token validates:
   validates :token, presence: true
+  validates :price, presence: true
 
   def save
     # Split passed params into seperate create methods for each model.
+    # Token will NOT be saved to the orders table. Unnecassary.
     order = Order.create(item_id: item_id, user_id: user_id)
     address = Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, house_number: house_number, building: building, phone_number: phone_number, order_id: order.id)
   end
