@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :move_to_index
   
   def index
     # ":item_id" <= From Rails Routes URI format

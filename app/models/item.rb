@@ -16,6 +16,7 @@ class Item < ApplicationRecord
   validates :title, presence: true
   validates :price, presence: true, numericality: { :greater_than => 299, :less_than => 10000000 }
   validates :description, presence: true
+  validates :image, presence: true
 
   validates :condition_id, numericality: { other_than: 1 }
   validates :mailing_cost_id, numericality: { other_than: 1 }
