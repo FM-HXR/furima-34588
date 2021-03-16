@@ -18,7 +18,7 @@ class OrderAddress
   with_options presence: true do
     validates :postal_code, format: {with: /\A\d{3}[-]\d{4}\z/, message: "is invalid. Please use the correct format."}
     validates :prefecture_id, numericality: { other_than: 1 }
-    validates :phone_number, length: {minimum: 10, maximum: 12}, format: {with: /\d+/, message: "is invalid. Numbers only."}
+    validates :phone_number, length: {maximum: 11}, format: {with: /\A[\d][\d]+\z/, message: "is invalid. Numbers only."}
   end
   
   # Orders column

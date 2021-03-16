@@ -12,8 +12,8 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :password, presence: true, format: {with: /\A(?=.*?[a-zA-Z])(?=.*?[\d])[a-z\d]+\z/i}, length: { minimum: 6 }
     validates :nickname, format: {with: /\A[a-z][a-z\d]+\z/i, message: "is invalid. Alphabets and Numbers only."}
-    validates :surname, format: {with: /\A[ァ-ヶ一-龥々]/, message: "is invalid. Whole case Kanji/Katakana only."}
-    validates :name, format: {with: /\A[ァ-ヶ一-龥々]/, message: "is invalid. Whole case Kanji/Katakana only."}
+    validates :surname, format: {with: /\A[ぁ-んァ-ヶ一-龥々]/, message: "is invalid. Whole case Kanji/Katakana/Hiragana only."}
+    validates :name, format: {with: /\A[ぁ-んァ-ヶ一-龥々]/, message: "is invalid. Whole case Kanji/Katakana/Hiragana only."}
     validates :surname_furigana, format: {with: /\A[ァ-ヶー－]+\z/, message: "is invalid. Whole case Katakana only."}
     validates :name_furigana, format: {with: /\A[ァ-ヶー－]+\z/, message: "is invalid. Whole case Katakana only."}
   end 

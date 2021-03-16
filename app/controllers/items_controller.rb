@@ -24,6 +24,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    if @item.order != nil
+      redirect_to root_path
+    end  
   end
 
   def update
@@ -36,6 +39,9 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    if @item.order != nil
+      redirect_to root_path
+    end 
     @item.destroy
     redirect_to root_path
   end
