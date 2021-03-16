@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :config_permitted_params, if: :devise_controller?
   # before_action :authenticate_user!
   before_action :find_user
-  # before_action :basic_auth
+  before_action :basic_auth
 
   def find_user
     @user = current_user
