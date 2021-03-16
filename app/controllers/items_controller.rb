@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :find_item, only: [:show, :edit, :update, :destroy]
+  before_action :item_security, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show, :search]
   
   def index
@@ -43,6 +44,12 @@ class ItemsController < ApplicationController
   end
 
   private
+  def item_security
+    if @item.user_id != current_user.id
+      redirect_to root_path
+    end  
+  end
+  
   def set_item_params
     params.require(:item).permit(:title, :price, :description, :condition_id, :mailing_cost_id, :prefecture_id, :days_til_post_id, :category_id, :image).merge(user_id: current_user.id)
   end
