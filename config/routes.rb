@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   root to: "items#index"
   resources :items do
-    resources :orders
+    get "/orders" => "orders#new"
+    resources :orders, only: [:create]
     collection do
       get 'search'
     end

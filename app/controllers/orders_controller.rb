@@ -3,10 +3,10 @@ class OrdersController < ApplicationController
   # before_action :find_item, only: [:new, :create, :index]
   # before_action :order_security, only: [:new, :create, :index]
   
-  def index
-    # ":item_id" <= From Rails Routes URI format
-    @item = Item.find(params[:item_id])
-  end
+  # def index
+  #   # ":item_id" <= From Rails Routes URI format
+  #   @item = Item.find(params[:item_id])
+  # end
 
   def new
     @item = Item.find(params[:item_id])
