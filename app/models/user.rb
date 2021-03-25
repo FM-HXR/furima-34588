@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :nickname, presence: true, length: { maximum: 20 }
   validates :email, presence: true
   validates :password, presence: true
-  # 
+  
   validates :date_of_birth, presence: true
   with_options presence: true do
     validates :password, presence: true, format: {with: /\A(?=.*?[a-zA-Z])(?=.*?[\d])[a-z\d]+\z/i}, length: { minimum: 6 }
